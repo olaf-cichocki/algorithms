@@ -23,12 +23,13 @@ def merge_sort(input_array):
 def merge(left, right, input_length):
     """Merging subroutine of merge_sort"""
     result = []
+    index = 0
     left_index = 0
     right_index = 0
     left_length = len(left)
     right_length = len(right)
 
-    for index in range(0, input_length):
+    while index <= input_length:
         if left_index == left_length:
             result.extend(right[right_index:])
             break
@@ -47,5 +48,7 @@ def merge(left, right, input_length):
         else:
             result.append(right_value)
             right_index += 1
+
+        index += 1
 
     return result
