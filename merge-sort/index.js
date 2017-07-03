@@ -1,18 +1,16 @@
 'use strict';
 const BASE_CASE_SIZE = 1;
 const mergeSort = (input) => {
-    const inputLength = input.length, inputIsSmallEnough = inputLength <= BASE_CASE_SIZE;
-    if (inputIsSmallEnough) {
+    const inputLength = input.length;
+    if (inputLength <= BASE_CASE_SIZE) {
         return input;
     }
-    const splittingPoint = Math.floor(inputLength / 2), leftArray = input.slice(0, splittingPoint), rightArray = input.slice(splittingPoint), sortedLeftArray = mergeSort(leftArray), sortedRightArray = mergeSort(rightArray);
-    return merge(sortedLeftArray, sortedRightArray);
+    const splittingPoint = Math.floor(inputLength / 2), leftArray = input.slice(0, splittingPoint), rightArray = input.slice(splittingPoint);
+    return merge(mergeSort(leftArray), mergeSort(rightArray), inputLength);
 };
-const merge = (left, right) => {
-    const combinedArraysLength = left.length + right.length;
-    ;
+const merge = (left, right, inputLength) => {
     let result = [], leftIndex = 0, rightIndex = 0;
-    for (let index = 0; index < combinedArraysLength; index++) {
+    for (let index = 0; index < inputLength; index++) {
         const leftComparedValue = left[leftIndex], rightComparedValue = right[rightIndex];
         if (leftComparedValue === undefined) {
             const restOfTheRemainingArray = right.slice(rightIndex);
