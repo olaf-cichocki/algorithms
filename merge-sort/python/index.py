@@ -1,3 +1,4 @@
+"""Merge sort algorithm example"""
 import math
 
 BASE_CASE_SIZE = 1
@@ -36,12 +37,15 @@ def merge(left, right, input_length):
             result.extend(left[left_index:])
             break
 
-        if left[left_index] < right[right_index]:
-            result.append(left[left_index])
+        left_value = left[left_index]
+        right_value = right[right_index]
+
+        if left_value < right_value:
+            result.append(left_value)
             left_index += 1
 
         else:
-            result.append(right[right_index])
+            result.append(right_value)
             right_index += 1
 
     return result
