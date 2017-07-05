@@ -1,6 +1,4 @@
 """Merge sort algorithm example"""
-import math
-
 BASE_CASE_SIZE = 1
 
 
@@ -11,11 +9,11 @@ def merge_sort(input_array):
     if input_length <= BASE_CASE_SIZE:
         return input_array
 
-    split_point = math.floor(input_length / 2)
+    middle = input_length // 2
 
     return merge(
-        merge_sort(input_array[:split_point]),
-        merge_sort(input_array[split_point:]),
+        merge_sort(input_array[:middle]),
+        merge_sort(input_array[middle:]),
         input_length
     )
 
