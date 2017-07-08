@@ -4,7 +4,8 @@ defmodule Sort do
   end
 
   def merge_sort(input) do
-    { left, right } = Enum.split(input, length(input) |> div(2))
+    splitting_point = length(input) |> div(2)
+    { left, right } = Enum.split(input, splitting_point)
     :lists.merge(merge_sort(left), merge_sort(right))
   end
 end
